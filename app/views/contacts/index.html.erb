@@ -14,7 +14,7 @@
          notice how we need to pass single_contact to the show_contact_path since it then presents :id to the 
          path from routes! (/contacts/:id) 
      -->
-     <td><%= link_to single_contact.first_name, show_contact_path(single_contact)%></td>
+     <td><%= link_to single_contact.first_name, contact_path(single_contact)%></td>
      <td><%= single_contact.last_name %></td>
   </tr>
 <% end %>

@@ -24,7 +24,7 @@ class ContactsController < ApplicationController
     redirect_to contacts_path
   end
 
-  def delete
+  def destroy
     Contact.find(params[:id]).destroy
     redirect_to contacts_path
   end
