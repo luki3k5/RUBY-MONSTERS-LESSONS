@@ -1,0 +1,17 @@
+<h2>Editing Contact</h2>
+
+<%= form_for @contact do |f| %>
+  <label for="">First Name</label>
+  <%= f.text_field :first_name %>
+  <br />
+  <label for="">Last Name</label>
+  <%= f.text_field :last_name %>
+  <br />
+  <label for="">Email</label>
+  <%= f.text_field :email %>
+  <br />
+  <label for="">Phone No.</label>
+  <%= f.text_field :phone_no %>
+  <br />
+  <%= f.submit "edit that puppy over" %>
+<% end %>
