@@ -4,8 +4,8 @@ class ContactsController < ApplicationController
   def index
     @contacts = Contact.all # @contacts variable gets passed to index.html.erb
   end
-
   # this will by default render views with the action's name 
+
   # (in this case show.html.erb)
   def show
     # params[:id] is what we pass from the browser url (because of what we have in routes.rb) 
@@ -28,4 +28,4 @@ class ContactsController < ApplicationController
     Contact.find(params[:id]).destroy
     redirect_to contacts_path
   end
-end 
+end
