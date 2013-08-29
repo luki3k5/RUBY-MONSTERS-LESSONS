@@ -1,3 +1,0 @@
-== Introdution to RSpec 
-
-The purpose of this lesson is to show you how to write the tests with RSpec
