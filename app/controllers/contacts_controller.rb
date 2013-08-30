@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
   # this will render by default index.html.erb!
   # because this is how cool rails is by default 
   def index
-    @contacts = Contact.all # @contacts variable gets passed to index.html.erb
+    @contacts = Contact.page params[:page] # @contacts variable gets passed to index.html.erb
   end
 
   # this will by default render views with the action's name 
@@ -23,6 +23,19 @@ class ContactsController < ApplicationController
     Contact.create(params[:contact])
     redirect_to contacts_path
   end
+
+  def edit
+    @contact = Contact.find(params[:id])
+  end
+
+  def update
+    @contact = Contact.find(params[:id])
+    if @contact.update_attributes(params[:contact])
+      redirect_to :action => 'show', :id => @contact
+    else
+      redirect_to contacts_path
+    end
+  end 
 
   def destroy
     Contact.find(params[:id]).destroy

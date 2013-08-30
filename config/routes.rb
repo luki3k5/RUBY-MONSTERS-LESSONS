@@ -2,7 +2,7 @@ AddressBook::Application.routes.draw do
   # "http://xyz.com/"
   root to: "home#hello"
 
-  resources :contacts#, only: [:show, :index]
+  resources :contacts#, only: [:show, :index, :edit]
 
    #this is another way of defining above root for all the contacts
    
