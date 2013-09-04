@@ -17,6 +17,8 @@ describe ContactsController do
 
   describe "GET #edit" do
     xit 'renders the proper view'
+      test
+    end
   end
 
   describe "PUT #update" do
