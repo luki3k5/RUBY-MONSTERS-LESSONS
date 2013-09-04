@@ -67,14 +67,6 @@ end
 
 
 
-
-
-
-
-
-
-
-
 class PerformingAnimal < Animal
   def stunt
     "Tadada!"
