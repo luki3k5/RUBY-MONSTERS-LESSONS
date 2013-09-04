@@ -1,43 +1,70 @@
-RUBY-MONSTERS-LESSONS
+Heroku Introduction
 =====================
 
-The lessons content for the Ruby Monsters coaching sessions 
-Please notice that this repository has branches for each of these
-classes. Just switch the branch to access desired lesson.
+This lesson focuses on enabling students to deploy their own code to
+Heroku hosting service [www.heroku.com](http://heroku.com)
 
-So far we had the following lessons: 
+### Useful Resources
 
-### Introduction to Ruby: 
+[Quickstart](https://devcenter.heroku.com/articles/quickstart) tutorial
+by Heroku. 
 
-We had two classes about how the basic ruby works, with the following 
-content: 
+[List of Addons](https://addons.heroku.com/) useful addons at your
+disposal
 
-- what is a variable
-- basic ruby language constructs (Hash, Array etc)
-- defining our own classes
-- creating objects
+### Executing Commands 
 
-### Introduction to RSpec: 
+If you wish to have a look into 'rails console' at heroku server execute
+the following command:  
 
-We started with writing model and controller spec. 
-I have explained what are the tests/specs for and how they
-ensure confidence in each line of code that we type. 
-Guys got introduced to the concept of Test Driven Development with
-writting their tests first to spec the requirements through them.
+   `heroku run console` 
 
-### Introducion to resources:  
+Sometimes you need to add the application to it (only if you have more
+than one) 
 
-We started by writting each of 7 RESTful methods ourselves in routes.rb 
-and at the end when everyone understood the difference between GET,
-POST, PUT, DELETE HTTP verbs we moved on and used 'resources :contacts'
-to auto render our routes. 
+  `heroku run console --app APPLICATION_NAME`
 
-Next I explained how the default routing actions map to controller
-actions and how these map to corresponding views (naming conventions) 
+Another useful command is to be able to see logs on the server:
 
-### Introduction to Heroku
+  `heroku run logs`
 
-I believe Heroku is the easiest way to start deploying new projects 
-and have them accessible online. We did the whole lesson about how 
-to use heroku through 'git push' command. There was a brief explanation
-of Heroku's philosophy and ideas of what is 'server/dyno'.
+or real time tailing with -t flag:
+
+  `heroku run logs -t` 
+
+#### Executing Rake commands
+
+Heroku behaves like your local instance in terms of executing rake
+commands. For example we need to migrate the database and then perhaps
+seed it? 
+
+Here is how you achieve that: 
+
+  `heroku run rake db:migrate` 
+
+in the similar fashion to seed that databse: 
+
+  `heroku run rake db:seed`
+
+### Quirks
+
+As we went along with our deployment process we had issue with the
+'sqlite' gem. Reason for which is that Heroku does not support this
+database. We need to get 'pg' gem installed (or any other supported by
+heroku but I focused on Postgresql). 
+
+### Interesting thoughts
+
+Please notice that you can either use terminal (Awesome Heroku's
+toolbelt) or web interface through their website to
+manage/create/destroy your applications. I strongly recommend to
+familiarize yourself with third party plugins/addons on their website. 
+You can learn this way about different DB engines, search indexers, 
+caching solutions and other useful components you can just literally
+plug into your application. 
+
+### Pricing 
+
+First dyno is for free, so you can deploy simple app and see it running
+there. Most addons have a free/trial tier too - so feel free to
+experiment! 
