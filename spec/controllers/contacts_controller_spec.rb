@@ -16,15 +16,28 @@ describe ContactsController do
   end
 
   describe "GET #edit" do
-    xit 'renders the proper view'
+    it 'renders the proper view' do 
+      contact = Contact.create(first_name: "JG", last_name: "F")
+      get :edit, id: contact.id
+      expect(response.status).to eq 200
+    end
   end
 
   describe "PUT #update" do
-    xit "should update user"
+    it "should update user" do 
+      @contact = Contact.create!(first_name: "Loly")
+      put :update, id: @contact.id, contact: { first_name: "Dolores" } 
+      contact_updated = Contact.find(@contact.id)
+      expect(contact_updated.first_name).should eq("Dolores")
+    end
   end
 
   describe "POST #create" do
-    xit 'should create new user'
+    it 'should create new user' do
+      post :create, contact: { first_name: "Mary", last_name: "Jones" }
+      expect(response.status).to eq 302
+      Contact.where(first_name: "Mary", last_name: "Jones").count.should eq 1
+    end
   end
 
   describe "GET #index" do
