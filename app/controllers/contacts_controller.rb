@@ -34,12 +34,8 @@ class ContactsController < ApplicationController
 
   # this is where we will actually create the contact based on the passed data
   def create
-    @contact = Contact.new(params[:contact])
-    if @contact.save
-      redirect_to contacts_path(@contact)
-    else
-      render "new"
-    end
+    Contact.create(params[:contact])
+    redirect_to contacts_path
   end
 
   def destroy

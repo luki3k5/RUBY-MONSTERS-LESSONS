@@ -12,7 +12,7 @@ feature 'Contacts management', js: true do
       visit '/contacts/1/edit'
       fill_in 'contact_first_name', with: "Annie"
       click_button("update that puppy")
-      expect(page).to have_content "Contact Details"
+      expect(page).to have_content "Annie"
      end
   end
 
@@ -81,7 +81,7 @@ feature 'Contacts management', js: true do
       click_button 'send that puppy over'
 
       # after succesfuly adding we expect redirect to happen to list
-      expect(current_path).to eq('/contacts.1')
+      expect(current_path).to eq(contacts_path)
     end
   end
 
