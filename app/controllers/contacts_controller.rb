@@ -18,6 +18,16 @@ class ContactsController < ApplicationController
     @contact = Contact.new 
   end
 
+  def edit
+    @contact = Contact.find(params[:id])
+  end
+
+  def update
+    @contact = Contact.find(params[:id])
+    @contact.update_attributes(params[:contact])
+    redirect_to contacts_path
+  end
+
   # this is where we will actually create the contact based on the passed data
   def create
     Contact.create(params[:contact])
