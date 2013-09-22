@@ -11,7 +11,7 @@ feature 'Contacts management', js: true do
 
       visit '/contacts/1/edit'
       fill_in 'contact_first_name', with: "Annie"
-      click_button("update that puppy")
+      click_button("Save Contact")
       expect(page).to have_content "Annie"
      end
   end
@@ -59,7 +59,7 @@ feature 'Contacts management', js: true do
       fill_in 'contact_last_name',  with: "Lazewski"
 
       expect(Contact.count).to be(0) # before creating
-      click_button 'send that puppy over'
+      click_button 'Save Contact'
       expect(Contact.count).to be(1) # after creating
     end
 
@@ -68,7 +68,7 @@ feature 'Contacts management', js: true do
       fill_in 'contact_first_name', with: "Lukasz"
       fill_in 'contact_last_name',  with: "Lazewski"
 
-      click_button 'send that puppy over'
+      click_button 'Save Contact'
       expect(Contact.first.first_name).to eq("Lukasz")
       expect(Contact.first.last_name).to  eq("Lazewski")
     end
@@ -78,7 +78,7 @@ feature 'Contacts management', js: true do
       fill_in 'contact_first_name', with: "Lukasz"
       fill_in 'contact_last_name',  with: "Lazewski"
 
-      click_button 'send that puppy over'
+      click_button 'Save Contact'
 
       # after succesfuly adding we expect redirect to happen to list
       expect(current_path).to eq(contacts_path)
