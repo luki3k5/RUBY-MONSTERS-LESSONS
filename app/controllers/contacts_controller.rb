@@ -1,4 +1,18 @@
 class ContactsController < ApplicationController
+
+  def update
+    @contact = Contact.find(params[:id])
+    if @contact.update_attributes(params[:contact])
+      redirect_to contact_path(@contact)
+    else
+      render "edit"
+    end
+  end
+
+  def edit
+    @contact = Contact.find(params[:id])
+  end
+
   # this will render by default index.html.erb!
   # because this is how cool rails is by default 
   def index

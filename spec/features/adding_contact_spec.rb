@@ -2,15 +2,28 @@ require 'spec_helper'
 
 # NOTE: always use js: true for integration/feature tests
 # feature keyword is just to wrap up together the whole set of things we 
-# test - usually the particual featyre of an application
+# test - usually the particual feature of an application
 feature 'Contacts management', js: true do
 
   describe "edit contact" do
-    # HOMEWORK
+    scenario 'edit contact' do
+      Contact.create(first_name: "Anne")
+
+      visit '/contacts/1/edit'
+      fill_in 'contact_first_name', with: "Annie"
+      click_button("update that puppy")
+      expect(page).to have_content "Annie"
+     end
   end
 
   describe "removal" do
-    # HOMEWHORK
+     scenario 'delete first contact' do
+      Contact.create(first_name: "Mary")
+
+      visit '/contacts/1'
+      click_link("Delete this guy")
+      expect(page).to have_content "Contacts List " 
+    end
   end
 
   describe 'listing contacts' do
@@ -29,7 +42,7 @@ feature 'Contacts management', js: true do
 
   # describe is just narrowing down to particular scopes
   describe 'adding new' do
-    # is equivalen of 'it' keyword and means a particual test
+    # is equivalent of 'it' keyword and means a particular test
     scenario 'navigating to form for adding user by url' do
       visit '/contacts/new'
       expect(page).to have_content 'Adding Contact'
